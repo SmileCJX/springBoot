@@ -1,8 +1,9 @@
-package com.caijx;
+package com.caijx.domain;
 
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
+import javax.validation.constraints.Min;
 
 /**
  * Created by Administrator on 2017/8/26/026.
@@ -14,6 +15,7 @@ public class Girl {
     @GeneratedValue
     private Integer id;
 
+    @Min(value = 18,message = "未成年少女禁止入内")
     private Integer age;
 
     private String cupSize;
@@ -43,5 +45,14 @@ public class Girl {
 
     public void setCupSize(String cupSize) {
         this.cupSize = cupSize;
+    }
+
+    @Override
+    public String toString() {
+        return "Girl{" +
+                "id=" + id +
+                ", age=" + age +
+                ", cupSize='" + cupSize + '\'' +
+                '}';
     }
 }

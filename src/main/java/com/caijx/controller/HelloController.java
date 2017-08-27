@@ -1,5 +1,6 @@
-package com.caijx;
+package com.caijx.controller;
 
+import com.caijx.properties.GirlProperties;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 

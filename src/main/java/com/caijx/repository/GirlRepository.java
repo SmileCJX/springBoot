@@ -1,5 +1,6 @@
-package com.caijx;
+package com.caijx.repository;
 
+import com.caijx.domain.Girl;
 import org.springframework.data.jpa.repository.JpaRepository;
 
 import java.util.List;

@@ -1,8 +1,15 @@
-package com.caijx;
+package com.caijx.controller;
 
+import com.caijx.domain.Girl;
+import com.caijx.repository.GirlRepository;
+import com.caijx.service.GirlService;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.*;
 
+import javax.validation.Valid;
 import java.util.List;
 
 /**
@@ -10,6 +17,8 @@ import java.util.List;
  */
 @RestController
 public class GirlController {
+
+    private static final Logger LOGGER = LoggerFactory.getLogger(GirlController.class);
 
     @Autowired
     private GirlRepository girlRepository;
@@ -23,21 +32,22 @@ public class GirlController {
      */
     @GetMapping(value = "/girls")
     public List<Girl> girlList(){
+        LOGGER.info("girlList");
         return girlRepository.findAll();
     }
 
     /**
      * 添加一个女生
-     * @param cupSize
-     * @param age
      * @return
      */
     @PostMapping(value = "/girls")
-    public Girl girlAdd(@RequestParam("cupSize") String cupSize,
-                        @RequestParam("age") Integer age){
-        Girl girl = new Girl();
-        girl.setCupSize(cupSize);
-        girl.setAge(age);
+    public Girl girlAdd(@Valid Girl girl, BindingResult bindingResult){
+        if(bindingResult.hasErrors()){
+            System.out.println(bindingResult.getFieldError().getDefaultMessage());
+            return null;
+        }
+//        girl.setCupSize(girl.getCupSize());
+//        girl.setAge(girl.getAge());
 
         return girlRepository.save(girl);
     }

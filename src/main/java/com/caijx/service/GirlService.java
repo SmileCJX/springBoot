@@ -1,5 +1,7 @@
-package com.caijx;
+package com.caijx.service;
 
+import com.caijx.domain.Girl;
+import com.caijx.repository.GirlRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
