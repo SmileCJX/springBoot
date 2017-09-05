@@ -4,6 +4,7 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 import javax.validation.constraints.Min;
+import javax.validation.constraints.NotNull;
 
 /**
  * Created by Administrator on 2017/8/26/026.
@@ -19,6 +20,9 @@ public class Girl {
     private Integer age;
 
     private String cupSize;
+
+    @NotNull(message = "金额必传")
+    private Double money;
 
     public Girl() {
     }
@@ -47,12 +51,21 @@ public class Girl {
         this.cupSize = cupSize;
     }
 
+    public Double getMoney() {
+        return money;
+    }
+
+    public void setMoney(Double money) {
+        this.money = money;
+    }
+
     @Override
     public String toString() {
         return "Girl{" +
                 "id=" + id +
                 ", age=" + age +
                 ", cupSize='" + cupSize + '\'' +
+                ", money=" + money +
                 '}';
     }
 }
