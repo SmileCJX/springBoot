@@ -39,7 +39,7 @@ public class HttpAspect {
         LOGGER.info("ip={}",request.getRemoteAddr());
 
         //类方法
-        LOGGER.info("class_method",joinpoint.getSignature().getDeclaringTypeName() + "." +
+        LOGGER.info("class_method={}",joinpoint.getSignature().getDeclaringTypeName() + "." +
         joinpoint.getSignature().getName());
 
         //参数
